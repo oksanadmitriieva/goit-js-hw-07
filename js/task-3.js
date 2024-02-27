@@ -1,10 +1,11 @@
-'use strict';
-function getElementWidth(content, padding, border) {
-  const contentWidth = Number.parseFloat(content);
-  const paddingWidth = Number.parseFloat(padding);
-  const borderWidth = Number.parseFloat(border);
-  return contentWidth + paddingWidth * 2 + borderWidth * 2;
+// Напиши скрипт, який під час набору тексту в інпуті input#name-input (подія input) підставляє його поточне значення в span#name-output як ім’я для привітання. Обов’язково очищай значення в інпуті по краях від пробілів . Якщо інпут порожній або містить лише пробіли, то замість імені у спан має підставлятися рядок "Anonymous".
+
+const userName = document.getElementById('name-input');
+const nameOutput = document.getElementById('name-output');
+
+function inputHandler(event) {
+  const murkup = event.target.value.trim();
+  nameOutput.textContent = murkup === '' ? 'Anonymous' : murkup;
 }
-console.log(getElementWidth('50px', '8px', '4px'));
-console.log(getElementWidth('60px', '12px', '8.5px'));
-console.log(getElementWidth('200px', '0px', '0px'));
+
+userName.addEventListener('input', inputHandler);
